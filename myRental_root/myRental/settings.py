@@ -47,6 +47,8 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+ACCOUNT_EMAIL_REQUIRED = True
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
