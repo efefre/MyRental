@@ -1,0 +1,13 @@
+nav {
+    background-color: #2ecc71;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+a.nav-link {
+    color: #fff;
+}
+
+a.nav-link:hover {
+    color: #ecf0f1;
+}
