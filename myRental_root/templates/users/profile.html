@@ -4,6 +4,7 @@
 {% for user in user_profile %}
     <h1>Twój login: {{user.user}}</h1>
     <h2>Twój email: {{user.user.email}}</h2>
-    <h2>Twoje imię i nazwisko: {{user.name}}</h2>
+    <h2>Twoje imię: {{user.first_name}}</h2>
+    <h2>Twoje nazwisko: {{user.last_name}}</h2>
 {% endfor %}
 {% endblock %}
