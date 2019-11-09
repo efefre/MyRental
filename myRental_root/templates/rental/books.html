@@ -1,0 +1,15 @@
+{% block content %}
+<h1>My Books</h1>
+
+{% for book in user_books %}
+<ol>
+    <li>
+        <ul>
+            <li>Title: {{ book.title }}</li>
+            <li>Author:{{ book.author }}</li>
+            <li>Status: {{book.get_status_display}}</li>
+        </ul>
+    </li>
+</ol>
+{% endfor %}
+{% endblock %}
