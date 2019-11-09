@@ -8,7 +8,7 @@ from .models import Books
 # Create your views here.
 @method_decorator(login_required, name='dispatch')
 class BooksList(View):
-    template_name = 'rental/books.html'
+    template_name = 'books/books.html'
     model = Books
 
     def get(self, request, *args, **kwargs):
