@@ -14,7 +14,7 @@ class Books(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=AVAILABLE)
-    owner = models.OneToOneField(User, on_delete=models.PROTECT, null=True)
+    owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return f'Book: {self.title}, Author: {self.author}'
