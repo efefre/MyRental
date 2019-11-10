@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', views.UserProfile.as_view(), name='user-profile'),
-    path('books/', include('books.urls'))
+    path('books/', include('books.urls')),
+    path('rental/', include('rental.urls'))
 ]
