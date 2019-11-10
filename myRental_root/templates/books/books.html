@@ -1,15 +1,22 @@
 {% block content %}
 <h1>My Books</h1>
 
-{% for book in user_books %}
 <ol>
+{% for book in user_books %}
     <li>
         <ul>
             <li>Title: {{ book.title }}</li>
             <li>Author:{{ book.author }}</li>
             <li>Status: {{book.get_status_display}}</li>
+            {% if book.status == 'AV' %}
+                <li><a href="{% url 'rental:loan-book' pk=book.pk %}">LOAN</a> </li>
+            {% endif %}
+            {% if book.status == 'LO' %}
+                <li><a href="#">RETURN</a> </li>
+            {% endif %}
         </ul>
     </li>
-</ol>
+
 {% endfor %}
+</ol>
 {% endblock %}

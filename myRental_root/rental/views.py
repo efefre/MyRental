@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import FormView
 from .forms import LoanBookForm
+from books.models import Books
 
 # Create your views here.
 class LoanBookView(FormView):
@@ -8,6 +8,16 @@ class LoanBookView(FormView):
     form_class = LoanBookForm
     success_url = '/books'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['book'] = Books.objects.get(pk=self.kwargs.get('pk'))
+        return context
+
     def form_valid(self, form):
+        form = form.save(commit=False)
+        context = self.get_context_data()
+        form.book = context['book']
+        context['book'].status ='LO'
+        context['book'].save()
         form.save()
         return super().form_valid(form)
