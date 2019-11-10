@@ -8,6 +8,7 @@
             <li>Title: {{ book.title }}</li>
             <li>Author:{{ book.author }}</li>
             <li>Status: {{book.get_status_display}}</li>
+            <li><a href="{% url 'rental:loan-book' pk=book.pk %}">LOAN</a> </li>
         </ul>
     </li>
 </ol>
