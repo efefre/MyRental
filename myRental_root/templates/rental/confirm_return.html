@@ -1,0 +1,8 @@
+{% block content %}
+<h1>Return book</h1>
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to return "{{ return.book.title }}" loaned by {{return.friend_name}} {{return.friend_surname}}?</p>
+    <input type="submit" value="Confirm"><a href="{% url 'books:books-list' %}">Cancel</a>
+
+</form>
+{% endblock %}
