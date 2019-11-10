@@ -12,7 +12,7 @@
                 <li><a href="{% url 'rental:loan-book' pk=book.pk %}">LOAN</a> </li>
             {% endif %}
             {% if book.status == 'LO' %}
-                <li><a href="#">RETURN</a> </li>
+                <li><a href="{% url 'rental:return-book' pk=book.pk %}">RETURN</a> </li>
             {% endif %}
         </ul>
     </li>
