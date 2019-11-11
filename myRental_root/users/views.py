@@ -17,3 +17,16 @@ class UserProfileView(View):
         user_detail = self.model.objects.filter(user = request.user)
         context = {'user_profile' : user_detail}
         return render(request, self.template_name, context = context)
+
+@method_decorator(login_required, name='dispatch')
+class UpdateUserProfileView(UpdateView):
+    model = UserProfile
+    fields = ['first_name', 'last_name']
+    template_name_suffix = '_update'
+
+    def get_object(self):
+        obj = self.model.objects.get(pk = self.request.user.pk)
+        return obj
+
+    def get_success_url(self):
+        return reverse('books:books-list')
