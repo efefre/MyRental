@@ -18,13 +18,18 @@ class LoanDetailContextMixin(ContextMixin):
 
 
 @method_decorator(login_required, name='dispatch')
-class BooksList(View):
+class BooksList(LoanDetailContextMixin, View):
     template_name = 'books/books.html'
     model = Books
 
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        return ctx
+
     def get(self, request, *args, **kwargs):
-        user_books = self.model.objects.filter(owner = request.user)
+        user_books = self.model.objects.filter(owner = request.user).order_by('title')
         context = {
-            'user_books' : user_books
+            'user_books' : user_books,
+            'loan_detail' : self.get_context_data(),
         }
         return render(request, self.template_name, context)
