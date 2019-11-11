@@ -1,13 +1,15 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.generic import UpdateView
 
 from .models import UserProfile
 
 # Create your views here.
 @method_decorator(login_required, name='dispatch')
-class UserProfile(View):
+class UserProfileView(View):
     model = UserProfile
     template_name = 'users/profile.html'
 
