@@ -25,6 +25,7 @@ class LoanBookView(FormView):
         form.save()
         return super().form_valid(form)
 
+@method_decorator(login_required, name='dispatch')
 class ReturnBookView(DeleteView):
     model = LoanBook
     template_name = 'rental/confirm_return.html'
@@ -32,7 +33,6 @@ class ReturnBookView(DeleteView):
 
     def get_object(self, queryset=None):
         pk = self.kwargs.get('pk')
-        print('Mam pk: ', pk)
         loan_book_object = LoanBook.objects.get(book_id = pk)
         return loan_book_object
 
