@@ -1,11 +1,19 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import FormView, DeleteView
+from django.utils.decorators import method_decorator
+from django.views.generic import FormView, DeleteView, TemplateView
 from .forms import LoanBookForm
 from books.models import Books
 from .models import LoanBook
 
+
 # Create your views here.
+@method_decorator(login_required, name='dispatch')
+class BookNotAvailable(TemplateView):
+    template_name = 'rental/book_not_available.html'
+
+
 class LoanBookView(FormView):
     template_name = 'rental/loan_book.html'
     form_class = LoanBookForm
