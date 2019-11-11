@@ -2,10 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.generic import FormView
 from django.views.generic.base import ContextMixin
 
 from .models import Books
 from rental.models import LoanBook
+from .forms import AddBookForm
 
 
 # Create your views here.
@@ -33,3 +35,15 @@ class BooksList(LoanDetailContextMixin, View):
             'loan_detail' : self.get_context_data(),
         }
         return render(request, self.template_name, context)
+
+@method_decorator(login_required, name='dispatch')
+class AddBookView(FormView):
+    template_name = 'books/add_book.html'
+    form_class = AddBookForm
+    success_url = '/books'
+
+    def form_valid(self, form):
+        form = form.save(commit=False)
+        form.owner = self.request.user
+        form.save()
+        return super().form_valid(form)
