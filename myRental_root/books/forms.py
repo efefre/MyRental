@@ -6,4 +6,4 @@ class AddBookForm(forms.ModelForm):
 
     class Meta:
         model = Books
-        exclude = ['owner']
+        exclude = ['owner', 'status']
