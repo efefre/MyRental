@@ -20,8 +20,13 @@ a.nav-link:hover {
     padding: 0;
 }
 
-#login-page {
+#login-page, #reset-password-page {
     margin-top: 40px;
+}
+
+
+#reset-password-page .bg-image {
+  background-image: url('/static/img/undraw_forgot_password_gi2d.svg');
 }
 
 /* login page */
