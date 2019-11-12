@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
-from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, View
 from django.views.generic.base import ContextMixin
 
 from .models import Books
@@ -30,6 +30,17 @@ class BooksList(LoanDetailContextMixin, View):
 
     def get(self, request, *args, **kwargs):
         user_books = self.model.objects.filter(owner = request.user).order_by('title')
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(user_books, 10)
+
+        try:
+            user_books = paginator.page(page)
+        except PageNotAnInteger:
+            user_books = paginator.page(1)
+        except EmptyPage:
+            user_books = paginator.page(paginator.num_pages)
+
         context = {
             'user_books' : user_books,
             'loan_detail' : self.get_context_data(),
