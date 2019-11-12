@@ -1,7 +1,7 @@
 {% block content %}
 <h1>My Books</h1>
 
-<ol>
+<ul>
 {% for book in user_books %}
     <li>
         <ul>
@@ -25,5 +25,29 @@
     </li>
 
 {% endfor %}
-</ol>
+</ul>
+
+
+{% if user_books.has_other_pages %}
+  <ul class="pagination">
+    {% if user_books.has_previous %}
+      <li><a href="?page={{ user_books.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in user_books.paginator.page_range %}
+      {% if user_books.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if user_books.has_next %}
+      <li><a href="?page={{ user_bookss.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
 {% endblock %}
