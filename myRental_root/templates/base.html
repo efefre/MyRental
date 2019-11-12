@@ -28,18 +28,13 @@
     </div>
     {% endif %}
 
-    <nav class="row justify-content-end">
-      <ul class="nav">
-        {% if user.is_authenticated %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a></li>
-        {% else %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Sign In</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
-    </nav>
-    <div class="container">
+    <!-- NavBar -->
+    {% include "partials/_navbar.html" %}
+
+    <!-- Meny -->
+    {% include "partials/_menu.html" %}
+
+    <div class="container main-content">
       {% block content %}
       {% endblock %}
     </div>
@@ -47,6 +42,7 @@
     {% block extra_body %}
     {% endblock %}
     </div>
+
       <!-- JS -->
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
