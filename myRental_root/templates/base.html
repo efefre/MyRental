@@ -17,22 +17,16 @@
     <div class="container-fluid">
     {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
+
 
     <!-- NavBar -->
     {% include "partials/_navbar.html" %}
 
     <!-- Meny -->
     {% include "partials/_menu.html" %}
+
+      <!-- Alerts -->
+    {% include "partials/_alerts.html" %}
 
     <div class="container main-content">
       {% block content %}
