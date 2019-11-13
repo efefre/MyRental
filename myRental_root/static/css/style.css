@@ -12,7 +12,8 @@ a.nav-link {
     color: #fff;
 }
 
-a.nav-link:hover {
+a.nav-link:hover,
+#menu a.active {
     color: #ecf0f1;
 }
 
