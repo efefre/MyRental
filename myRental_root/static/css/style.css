@@ -9,12 +9,13 @@
 }
 
 a.nav-link {
-    color: #fff;
+    color: #ecf0f1;
+
 }
 
 a.nav-link:hover,
 #menu a.active {
-    color: #ecf0f1;
+    color: #fff;
 }
 
 .custom-control {
