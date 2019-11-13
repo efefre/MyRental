@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
         for friend in friend_who_have_loaned_books:
             message = f"Cześć {friend.friend_name},\n\n" \
-                f"Mam nadzieję, że książka: {friend.book.title} Ci się podoba. " \
+                f"mam nadzieję, że książka: {friend.book.title} Ci się podoba. " \
                 f"Jak tylko skończysz czytać, proszę zwróć ją. Chcę jeszcze do niej kiedyś zajrzeć :)"
             emails.append((subject, message, settings.DEFAULT_FROM_EMAIL, [friend.friend_email]))
         send_mass_mail(emails)
