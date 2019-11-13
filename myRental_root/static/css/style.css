@@ -142,3 +142,9 @@ a.nav-link:hover {
     color: #777;
   }
 }
+
+/* Alerts */
+
+#message {
+    margin-top: 25px;
+}
