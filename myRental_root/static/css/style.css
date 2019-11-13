@@ -144,7 +144,11 @@ a.nav-link:hover {
 }
 
 /* Alerts */
-
 #message {
+    margin-top: 25px;
+}
+
+/* Books */
+#books {
     margin-top: 25px;
 }
