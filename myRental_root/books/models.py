@@ -7,8 +7,8 @@ class Books(models.Model):
     LOAN = 'LO'
 
     STATUS_CHOICES = (
-        (AVAILABLE, 'Available'),
-        (LOAN, 'On loan')
+        (AVAILABLE, 'Dostępna'),
+        (LOAN, 'Wypożyczona')
     )
 
     title = models.CharField(max_length=200)

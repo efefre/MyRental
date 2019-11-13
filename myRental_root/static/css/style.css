@@ -12,7 +12,8 @@ a.nav-link {
     color: #fff;
 }
 
-a.nav-link:hover {
+a.nav-link:hover,
+#menu a.active {
     color: #ecf0f1;
 }
 
@@ -141,4 +142,14 @@ a.nav-link:hover {
   .form-label-group input:-ms-input-placeholder {
     color: #777;
   }
+}
+
+/* Alerts */
+#message {
+    margin-top: 25px;
+}
+
+/* Books */
+#books {
+    margin-top: 25px;
 }

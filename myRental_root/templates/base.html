@@ -17,22 +17,16 @@
     <div class="container-fluid">
     {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
+
 
     <!-- NavBar -->
     {% include "partials/_navbar.html" %}
 
     <!-- Meny -->
     {% include "partials/_menu.html" %}
+
+      <!-- Alerts -->
+    {% include "partials/_alerts.html" %}
 
     <div class="container main-content">
       {% block content %}
@@ -46,5 +40,6 @@
       <!-- JS -->
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>

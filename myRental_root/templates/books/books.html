@@ -1,31 +1,36 @@
+{% extends 'base.html' %}
+
 {% block content %}
-<h1>My Books</h1>
+<div class="container" id="books">
+<h1>Moje książki</h1>
 
-<ul>
+<table class="table">
+  <th>Tytuł książki</th>
+  <th>Autor</th>
+  <th>Status</th>
+  <th></th>
+  <th></th>
+
 {% for book in user_books %}
-    <li>
-        <ul>
-            <li>Title: {{ book.title }}</li>
-            <li>Author:{{ book.author }}</li>
-            <li>Status: {{book.get_status_display}}</li>
-            {% if book.status == 'AV' %}
-                <li><a href="{% url 'rental:loan-book' pk=book.pk %}">LOAN</a> </li>
-            {% endif %}
-            {% if book.status == 'LO' %}
-                <li><a href="{% url 'rental:return-book' pk=book.pk %}">RETURN</a> </li>
-            {% endif %}
-
-            {% for loan in loan_detail %}
-                {% if loan.book_id == book.id %}
-            <p>Loaned by: {{loan.friend_name}} {{loan.friend_surname}} (e-mail: {{loan.friend_email}})</p>
-            <p>Date: {{loan.date}}</p>
-                {% endif%}
-            {% endfor %}
-        </ul>
-    </li>
-
+  <tr>
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+    <td>{{ book.get_status_display }}</td>
+    <td>{% if book.status == 'AV' %}
+            <a class="btn btn-success btn-sm" href="{% url 'rental:loan-book' pk=book.pk %}">Wypożycz</a>
+        {% endif %}
+        {% if book.status == 'LO' %}
+            <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
+        {% endif %}</td>
+    <td>{% for loan in loan_detail %}
+            {% if loan.book_id == book.id %}
+      <p>Wypożyczona: {{loan.date}}</br>
+        <strong>{{loan.friend_name}} {{loan.friend_surname}}</strong> (e-mail: {{loan.friend_email}})</p>
+            {% endif%}
+        {% endfor %}</td>
+  </tr>
 {% endfor %}
-</ul>
+</table>
 
 
 {% if user_books.has_other_pages %}
@@ -49,5 +54,6 @@
     {% endif %}
   </ul>
 {% endif %}
+</div>
 
 {% endblock %}
