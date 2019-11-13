@@ -29,7 +29,7 @@ class BooksList(LoanDetailContextMixin, View):
         return ctx
 
     def get(self, request, *args, **kwargs):
-        user_books = self.model.objects.filter(owner = request.user).order_by('title')
+        user_books = self.model.objects.filter(owner = request.user).order_by('-status', 'title')
         page = request.GET.get('page', 1)
 
         paginator = Paginator(user_books, 10)
