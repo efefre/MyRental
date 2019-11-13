@@ -3,8 +3,20 @@
 {% if user.is_authenticated %}
   <div class="row" id="menu">
       <ul class="nav container">
-        <li class="nav-item"><a class="nav-link" href="{% url 'books:books-list' %}">Lista książek</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'books:add-book' %}">Dodaj książkę</a></li>
+        <li class="nav-item">
+          <a  {% if '/books/' == request.path %}
+                class="nav-link active"
+              {% else %}
+                class="nav-link"
+              {% endif %}
+          href="{% url 'books:books-list' %}">Lista książek</a></li>
+        <li class="nav-item">
+          <a  {% if 'books/add-book/' == request.path %}
+                class="nav-link active"
+              {% else %}
+                class="nav-link"
+              {% endif %}
+          href="{% url 'books:add-book' %}">Dodaj książkę</a></li>
       </ul>
     </div>
 {% endif%}
