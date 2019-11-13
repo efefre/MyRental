@@ -56,6 +56,8 @@ SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
 
+LOGIN_REDIRECT_URL = 'books:books-list'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
