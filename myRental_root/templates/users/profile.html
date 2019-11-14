@@ -1,10 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for user in user_profile %}
-    <h1>Twój login: {{user.user}}</h1>
-    <h2>Twój email: {{user.user.email}}</h2>
-    <h2>Twoje imię: {{user.first_name}}</h2>
-    <h2>Twoje nazwisko: {{user.last_name}}</h2>
-{% endfor %}
+
+<div class="container-fluid" id="profile-page">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Twoje dane</h3>
+                {% for user in user_profile %}
+                <p>Login: <strong>{{user.user}}</strong></p>
+                    <p>E-mail: <strong>{{user.user.email}}</strong></p>
+                    <p>Imię: <strong>{{user.first_name}}</strong></p>
+                    <p>Nazwisko: <strong>{{user.last_name}}</strong></p>
+                {% endfor %}
+                <a class="btn btn-primary btn-sm" href="{% url 'update-profile' %}">Edytuj dane</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
