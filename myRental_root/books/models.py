@@ -11,9 +11,9 @@ class Books(models.Model):
         (LOAN, 'Wypożyczona')
     )
 
-    title = models.CharField(max_length=200)
-    author = models.CharField(max_length=200)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=AVAILABLE)
+    title = models.CharField(verbose_name='Tytuł', max_length=200)
+    author = models.CharField(verbose_name='Autor', max_length=200)
+    status = models.CharField(verbose_name='Status',max_length=20, choices=STATUS_CHOICES, default=AVAILABLE)
     owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 
     def __str__(self):
