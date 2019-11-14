@@ -159,10 +159,14 @@ input#id_date {
     width: 20%;
 }
 
-#no-book {
+#no-book, #profile-page {
     margin-top: 80px;
 }
 
 #no-book .bg-image {
   background-image: url('/static/img/undraw_reading_list_4boi.svg');
+}
+
+#profile-page .bg-image {
+  background-image: url('/static/img/undraw_profile_6l1l.svg');
 }
