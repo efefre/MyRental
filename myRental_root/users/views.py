@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import UpdateView
 
-from users.forms import UpdateUserProfilForm
+from users.forms import UpdateUserProfileForm
 from .models import UserProfile
 
 # Create your views here.
