@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import UpdateView
 
+from users.forms import UpdateUserProfilForm
 from .models import UserProfile
 
 # Create your views here.
@@ -21,7 +22,7 @@ class UserProfileView(View):
 @method_decorator(login_required, name='dispatch')
 class UpdateUserProfileView(UpdateView):
     model = UserProfile
-    fields = ['first_name', 'last_name']
+    form_class = UpdateUserProfileForm
     template_name_suffix = '_update'
 
     def get_object(self):
@@ -29,4 +30,4 @@ class UpdateUserProfileView(UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse('books:books-list')
+        return reverse('user-profile')
