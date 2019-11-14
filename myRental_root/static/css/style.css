@@ -151,6 +151,18 @@ a.nav-link:hover,
 }
 
 /* Books */
-#books {
+#books, #add-books, #loan-book, #confirm-return {
     margin-top: 25px;
+}
+
+input#id_date {
+    width: 20%;
+}
+
+#no-book {
+    margin-top: 80px;
+}
+
+#no-book .bg-image {
+  background-image: url('/static/img/undraw_reading_list_4boi.svg');
 }

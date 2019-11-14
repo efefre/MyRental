@@ -1,5 +1,25 @@
+{% extends 'base.html' %}
 {% block content %}
-<h1>Book is loaned by other user</h1>
+
+<div class="container-fluid" id="no-book">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Książka jest niedostępna :(</h3>
+              <p>Nie możesz wypożyczyć książki, jeżeli nie została jeszcze zwrócona. <br>Sprawdź jej status
+<a href="{% url 'books:books-list' %}">tutaj</a>.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}
