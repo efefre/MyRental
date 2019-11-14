@@ -151,6 +151,6 @@ a.nav-link:hover,
 }
 
 /* Books */
-#books {
+#books, #add-books {
     margin-top: 25px;
 }
