@@ -151,7 +151,7 @@ a.nav-link:hover,
 }
 
 /* Books */
-#books, #add-books, #loan-book, #confirm-return {
+#books, #add-books, #loan-book, #confirm-return, #change-password {
     margin-top: 25px;
 }
 
