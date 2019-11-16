@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
+
+{% block head_title %}Potwierdź zwrot książki{% endblock %}
+
 {% block content %}
 <div class="container" id="confirm-return">
-<h1>Zwrot książki</h1>
-<form method="post">
+  <h1>Zwrot książki</h1>
+  <form method="post">
     {% csrf_token %}
-    <p>Czy na pewno chcesz zwrócić książkę: <strong>{{ return.book.title }}</strong>, wypożyczoną przez <strong>{{return.friend_name}} {{return.friend_surname}}</strong>?</p>
-    <button type="submit" class="btn btn-primary">Potwierdź</button> <a href="{% url 'books:books-list' %}">Anuluj</a>
-
-</form>
+    <p>Czy na pewno chcesz zwrócić książkę: <strong>{{ return.book.title }}</strong>, wypożyczoną przez <strong>{{return.friend_name}}
+      {{return.friend_surname}}</strong>?</p>
+    <button type="submit" class="btn btn-primary">Potwierdź</button>
+    <a href="{% url 'books:books-list' %}">Anuluj</a>
+  </form>
 </div>
 {% endblock %}

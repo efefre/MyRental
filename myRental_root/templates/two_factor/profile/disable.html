@@ -1,0 +1,16 @@
+{% extends "two_factor/_base_focus.html" %}
+{% load i18n %}
+
+{% block head_title %}Wyłączenie autoryzacji dwuetapowej{% endblock %}
+{% block content %}
+<div class="container-fluid" id="other-page-only-text">
+  <h1>{% block title %}{% trans "Disable Two-factor Authentication" %}{% endblock %}</h1>
+  <p>Czy jesteś pewny, że chcesz wyłączyć autoryzację dwuaetapową? Autoryzacja zwiększa bezpieczeństwo Twojego konta.</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <p>{{ form.understand }} {{form.understand.label }}</p>
+    <button class="btn btn-danger" type="submit">{% trans "Disable" %}</button>
+  </form>
+</div>
+{% endblock %}

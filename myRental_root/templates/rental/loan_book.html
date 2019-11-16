@@ -1,29 +1,31 @@
 {% extends 'base.html' %}
 
+{% block head_title %}Wypożycz książkę{% endblock %}
+
 {% block content %}
 <div class="container" id="loan-book">
-<h1>Wypożycz książkę {{ context.book }}</h1>
-<form method="post">
+  <h1>Wypożycz książkę {{ context.book }}</h1>
+  <form method="post">
     {% csrf_token %}
     <div class="form-group">
-    <label for="id_date">Data wypożyczenia</label>
-    {{ form.date }}
-  </div>
+      <label for="id_date">Data wypożyczenia</label>
+      {{ form.date }}
+    </div>
     <br>
     <p><strong>Dane wypożyczającego</strong></p>
-  <div class="form-group">
-    <label for="id_friend_name">Imię</label>
-    {{form.friend_name}}
-  </div>
     <div class="form-group">
-    <label for="id_firend_surname">Nazwisko</label>
-    {{form.friend_surname}}
-  </div>
+      <label for="id_friend_name">Imię</label>
+      {{form.friend_name}}
+    </div>
     <div class="form-group">
-    <label for="id_friend_email">Adres email</label>
-    {{form.friend_email}}
-  </div>
-  <button type="submit" class="btn btn-primary">Wypożycz</button>
-</form>
+      <label for="id_firend_surname">Nazwisko</label>
+      {{form.friend_surname}}
+    </div>
+    <div class="form-group">
+      <label for="id_friend_email">Adres email</label>
+      {{form.friend_email}}
+    </div>
+    <button type="submit" class="btn btn-primary">Wypożycz</button>
+  </form>
 </div>
 {% endblock %}
