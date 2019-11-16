@@ -159,7 +159,8 @@ input#id_date {
     width: 20%;
 }
 
-#no-book, #profile-page, #account-inactive {
+#no-book, #profile-page, #account-inactive,
+#verification-sent, #other-page {
     margin-top: 80px;
 }
 
