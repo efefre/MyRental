@@ -33,7 +33,7 @@
                   {% else %}
                     class="nav-link"
                   {% endif %}
-                 href="{% url 'account_login' %}">Zaglouj</a></li>
+                 href="{% url 'two_factor:profile' %}">Zaloguj</a></li>
             <li class="nav-item">
               <a
                  {% if '/accounts/signup/' == request.path %}
