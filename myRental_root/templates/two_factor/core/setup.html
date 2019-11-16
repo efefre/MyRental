@@ -1,7 +1,9 @@
 {% extends "two_factor/_base_focus.html" %}
 {% load i18n %}
 
+{% block head_title %}Autoryzacja dwuetapowa{% endblock %}
 {% block content %}
+<div class="container-fluid" id="other-page-only-text">
   <h1>{% block title %}{% trans "Enable Two-Factor Authentication" %}{% endblock %}</h1>
   {% if wizard.steps.current == 'welcome' %}
     <p>{% blocktrans %}You are about to take your account security to the
@@ -53,4 +55,5 @@
 
     {% include "two_factor/_wizard_actions.html" %}
   </form>
+</div>
 {% endblock %}
