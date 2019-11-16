@@ -19,12 +19,14 @@
 
 
 {% if form.non_field_errors %}
-<div class="alert alert-danger" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Zamknij"><span aria-hiden="true">&times;</span>
+<div id="error" class="container">
+  <div class="alert alert-danger" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Zamknij"><span aria-hiden="true">&times;</span>
     </button>
-  <strong>UWAGA!</strong>
-  {% for error in form.non_field_errors %}
-  {{ error }}
-  {% endfor %}
+    <strong>UWAGA!</strong>
+    {% for error in form.non_field_errors %}
+    {{ error }}
+    {% endfor %}
+  </div>
 </div>
 {% endif %}
