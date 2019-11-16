@@ -3,7 +3,6 @@
 {% block head_title %}Profil użytkownika{% endblock %}
 
 {% block content %}
-
 <div class="container-fluid" id="profile-page">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -20,7 +19,6 @@
                     <p>Nazwisko: <strong>{{user.last_name}}</strong></p>
                 {% endfor %}
                 <p><a class="btn btn-primary" href="{% url 'update-profile' %}">Edytuj dane</a></p>
-
                 <p><a class="btn btn-primary" href="{% url 'two_factor:profile' %}">Autoryzacja dwuetapowa</a></p>
             </div>
           </div>
@@ -29,5 +27,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

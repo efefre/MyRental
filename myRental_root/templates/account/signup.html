@@ -5,7 +5,6 @@
 {% block head_title %}Utwórz konto{% endblock %}
 
 {% block content %}
-
 <div class="container-fluid" id="login-page">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -16,11 +15,11 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Utwórz konto</h3>
               <p>Masz już konto? Możesz się
-<a href="{{ login_url }}">zalogować</a>.</p>
+                <a href="{{ login_url }}">zalogować</a>.</p>
               <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
                 <div class="form-label-group">
-                    {{ form.email}}
+                  {{ form.email}}
                   <label for="id_email">E-mail</label>
                 </div>
 
@@ -39,9 +38,9 @@
                   <label for="id_password2">Powtórz hasło</label>
                 </div>
 
-
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Utwórz konto</button>
-
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                        type="submit">Utwórz konto
+                </button>
               </form>
             </div>
           </div>
@@ -50,5 +49,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

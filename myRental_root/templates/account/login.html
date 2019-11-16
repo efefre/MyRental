@@ -6,8 +6,6 @@
 {% block head_title %}Zaloguj się{% endblock %}
 
 {% block content %}
-
-
 <div class="container-fluid" id="login-page">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -18,7 +16,7 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Zaloguj się</h3>
               <p>Jeżeli nie masz jeszcze konta, możesz
-<a href="{{ signup_url }}">utworzyć je</a> tutaj.</p>
+                  <a href="{{ signup_url }}">utworzyć je</a> tutaj.</p>
               <form class="login" method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
                 <div class="form-label-group">
@@ -46,5 +44,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

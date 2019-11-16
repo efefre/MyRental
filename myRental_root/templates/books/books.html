@@ -4,64 +4,61 @@
 
 {% block content %}
 <div class="container" id="books">
-<h1>Moje książki</h1>
-{% if user_books %}
-<table class="table">
-  <th>Tytuł książki</th>
-  <th>Autor</th>
-  <th>Status</th>
-  <th></th>
-  <th></th>
+  <h1>Moje książki</h1>
+  {% if user_books %}
+  <table class="table">
+    <th>Tytuł książki</th>
+    <th>Autor</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
 
-
-  {% for book in user_books %}
+    {% for book in user_books %}
     <tr>
       <td>{{ book.title }}</td>
       <td>{{ book.author }}</td>
       <td>{{ book.get_status_display }}</td>
       <td>{% if book.status == 'AV' %}
-              <a class="btn btn-success btn-sm" href="{% url 'rental:loan-book' pk=book.pk %}">Wypożycz</a>
-          {% endif %}
-          {% if book.status == 'LO' %}
-              <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
-          {% endif %}</td>
+        <a class="btn btn-success btn-sm" href="{% url 'rental:loan-book' pk=book.pk %}">Wypożycz</a>
+        {% endif %}
+        {% if book.status == 'LO' %}
+        <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
+        {% endif %}
+      </td>
       <td>{% for loan in loan_detail %}
-              {% if loan.book_id == book.id %}
+        {% if loan.book_id == book.id %}
         <p>Wypożyczona: {{loan.date}}</br>
           <strong>{{loan.friend_name}} {{loan.friend_surname}}</strong> (e-mail: {{loan.friend_email}})</p>
-              {% endif%}
-          {% endfor %}</td>
+        {% endif%}
+        {% endfor %}
+      </td>
     </tr>
-  {% endfor %}
-</table>
+    {% endfor %}
+  </table>
   {% else %}
   <p>Nie masz jeszcze książek na swojej liście. Możesz je dodać <a href="{% url 'books:add-book' %}">tutaj</a>.</p>
   {% endif %}
 
-
-
-
-{% if user_books.has_other_pages %}
+  {% if user_books.has_other_pages %}
   <ul class="pagination">
     {% if user_books.has_previous %}
-      <li class="page-item"><a class="page-link" href="?page={{ user_books.previous_page_number }}">&laquo;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ user_books.previous_page_number }}">&laquo;</a></li>
     {% else %}
-      <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
     {% endif %}
     {% for i in user_books.paginator.page_range %}
-      {% if user_books.number == i %}
-        <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
+    {% if user_books.number == i %}
+    <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
     {% endfor %}
     {% if user_books.has_next %}
-      <li class="page-item"><a class="page-link" href="?page={{ user_books.next_page_number }}">&raquo;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ user_books.next_page_number }}">&raquo;</a></li>
     {% else %}
-      <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
     {% endif %}
   </ul>
-{% endif %}
+  {% endif %}
 </div>
-
 {% endblock %}
