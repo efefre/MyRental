@@ -1,4 +1,9 @@
 <table>
   {{ wizard.management_form }}
-  {{ wizard.form }}
+  {% for field in wizard.form %}
+  <div class="form-label-group">
+    {{field}}
+    <label for="{{field.auto_id}}">{{field.label}}</label>
+  </div>
+  {%endfor%}
 </table>
