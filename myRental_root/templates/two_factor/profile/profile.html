@@ -1,7 +1,11 @@
 {% extends "two_factor/_base.html" %}
+
 {% load i18n two_factor %}
 
+{% block head_title %}Bezpieczeństwo konta{% endblock %}
+
 {% block content %}
+<div class="container-fluid" id="other-page-only-text">
   <h1>{% block title %}{% trans "Account Security" %}{% endblock %}</h1>
 
   {% if default_device %}
@@ -45,12 +49,12 @@
       {% endblocktrans %}
     </p>
     <p><a href="{% url 'two_factor:backup_tokens' %}"
-          class="btn btn-info">{% trans "Show Codes" %}</a></p>
+          class="btn btn-primary">{% trans "Show Codes" %}</a></p>
 
     <h3>{% trans "Disable Two-Factor Authentication" %}</h3>
     <p>{% blocktrans %}However we strongly discourage you to do so, you can
       also disable two-factor authentication for your account.{% endblocktrans %}</p>
-    <p><a class="btn btn-default" href="{% url 'two_factor:disable' %}">
+    <p><a class="btn btn-primary" href="{% url 'two_factor:disable' %}">
       {% trans "Disable Two-Factor Authentication" %}</a></p>
   {% else %}
     <p>{% blocktrans %}Two-factor authentication is not enabled for your
@@ -60,4 +64,5 @@
       {% trans "Enable Two-Factor Authentication" %}</a>
     </p>
   {% endif %}
+</div>
 {% endblock %}
