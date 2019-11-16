@@ -160,7 +160,7 @@ input#id_date {
 }
 
 #no-book, #profile-page, #account-inactive,
-#verification-sent {
+#verification-sent, #other-page {
     margin-top: 80px;
 }
 
