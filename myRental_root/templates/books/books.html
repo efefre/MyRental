@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
+{% block head_title %}Moje książki{% endblock %}
+
 {% block content %}
 <div class="container" id="books">
 <h1>Moje książki</h1>
-
+{% if user_books %}
 <table class="table">
   <th>Tytuł książki</th>
   <th>Autor</th>
@@ -11,26 +13,30 @@
   <th></th>
   <th></th>
 
-{% for book in user_books %}
-  <tr>
-    <td>{{ book.title }}</td>
-    <td>{{ book.author }}</td>
-    <td>{{ book.get_status_display }}</td>
-    <td>{% if book.status == 'AV' %}
-            <a class="btn btn-success btn-sm" href="{% url 'rental:loan-book' pk=book.pk %}">Wypożycz</a>
-        {% endif %}
-        {% if book.status == 'LO' %}
-            <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
-        {% endif %}</td>
-    <td>{% for loan in loan_detail %}
-            {% if loan.book_id == book.id %}
-      <p>Wypożyczona: {{loan.date}}</br>
-        <strong>{{loan.friend_name}} {{loan.friend_surname}}</strong> (e-mail: {{loan.friend_email}})</p>
-            {% endif%}
-        {% endfor %}</td>
-  </tr>
-{% endfor %}
+
+  {% for book in user_books %}
+    <tr>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.get_status_display }}</td>
+      <td>{% if book.status == 'AV' %}
+              <a class="btn btn-success btn-sm" href="{% url 'rental:loan-book' pk=book.pk %}">Wypożycz</a>
+          {% endif %}
+          {% if book.status == 'LO' %}
+              <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
+          {% endif %}</td>
+      <td>{% for loan in loan_detail %}
+              {% if loan.book_id == book.id %}
+        <p>Wypożyczona: {{loan.date}}</br>
+          <strong>{{loan.friend_name}} {{loan.friend_surname}}</strong> (e-mail: {{loan.friend_email}})</p>
+              {% endif%}
+          {% endfor %}</td>
+    </tr>
+  {% endfor %}
 </table>
+  {% else %}
+  <p>Nie masz jeszcze książek na swojej liście. Możesz je dodać <a href="{% url 'books:add-book' %}">tutaj</a>.</p>
+  {% endif %}
 
 
 
