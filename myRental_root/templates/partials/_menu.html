@@ -1,7 +1,7 @@
 {% load static%}
 <!-- Menu -->
 {% if user.is_authenticated %}
-  <div class="row" id="menu">
+  <div id="menu">
       <ul class="nav container">
         <li class="nav-item">
           <a  {% if '/books/' == request.path %}
