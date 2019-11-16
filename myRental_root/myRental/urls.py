@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from two_factor.urls import urlpatterns as tf_urls
 
 from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tfa/', include(tf_urls)),
     path('', RedirectView.as_view(url='/books/'), name='home'),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', views.UserProfileView.as_view(), name='user-profile'),
