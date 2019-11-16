@@ -5,8 +5,19 @@
 {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Verify Your E-mail Address" %}</h1>
-
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
-
+<div class="container-fluid" id="verification-sent">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container"><h3>Zweryfikuj adres e-mail</h3>
+          <p>Wysłaliśmy do Ciebie maila z linkiem pozwalającym na zakończenie procesu rejestracji. Jeżeli e-mail nie
+            dotrze w ciągu kilku minut, skontaktuj się z nami.</p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 {% endblock %}
