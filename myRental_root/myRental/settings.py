@@ -56,6 +56,8 @@ SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
 
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
 LOGIN_REDIRECT_URL = 'books:books-list'
 
 MIDDLEWARE = [
