@@ -61,6 +61,8 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+ACCOUNT_ADAPTER = 'users.adapter.NoNewUsersAccountAdapter'
+
 ACCOUNT_EMAIL_REQUIRED = True
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
