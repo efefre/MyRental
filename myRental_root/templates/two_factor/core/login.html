@@ -15,7 +15,10 @@
               {% if wizard.steps.current == 'auth' %}
               <p>{% blocktrans %}Enter your credentials.{% endblocktrans %}<br>
               <a class="small" href="{% url 'account_reset_password' %}">Zapomniałeś hasła?</a></p>
-
+              <div class="alert alert-info" id="demo-user" role="alert">
+                <p>Możesz zalogować się danymi demonstracyjnymi:<br>
+                login: <strong>demo</strong><br>
+                  hasło: <strong>demo1234</strong><br></p></div>
               {% elif wizard.steps.current == 'token' %}
               {% if device.method == 'call' %}
               <p>{% blocktrans %}We are calling your phone right now, please enter the
