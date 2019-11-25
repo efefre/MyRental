@@ -11,3 +11,13 @@ class AddBookForm(forms.ModelForm):
     class Meta:
         model = Books
         exclude = ['owner', 'status']
+
+
+class UpdateBookForm(forms.ModelForm):
+    class Meta:
+        model = Books
+        fields = ['title', 'author']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'author': forms.TextInput(attrs={'class': 'form-control'}),
+        }
