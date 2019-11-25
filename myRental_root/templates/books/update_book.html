@@ -16,6 +16,7 @@
       <label for="id_title">Tytuł książki</label>
       {{form.title}}
     </div>
+    <a href="{% url 'books:books-list' %}" class="pull-right btn btn-link">Anuluj</a>
     <button type="submit" class="btn btn-primary">Zapisz</button>
   </form>
 </div>
