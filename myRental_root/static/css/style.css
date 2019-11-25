@@ -175,3 +175,10 @@ input#id_date {
 #other-page-only-text {
     margin-top: 20px;
 }
+
+@media screen and (max-width: 1000px) {
+    .bg-image {
+        background-size: contain;
+        background-repeat: no-repeat
+    }
+}
