@@ -1,13 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
+from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import FormView, View
+from django.views.generic import FormView, View, UpdateView
 from django.views.generic.base import ContextMixin
 
 from .models import Books
 from rental.models import LoanBook
-from .forms import AddBookForm
+from .forms import AddBookForm, UpdateBookForm
 
 
 # Create your views here.
@@ -58,3 +59,13 @@ class AddBookView(FormView):
         form.owner = self.request.user
         form.save()
         return super().form_valid(form)
+
+
+@method_decorator(login_required, name='dispatch')
+class UpdateBookView(UpdateView):
+    model = Books
+    template_name = 'books/update_book.html'
+    form_class = UpdateBookForm
+
+    def get_success_url(self):
+        return reverse('books:books-list')
