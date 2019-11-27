@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import FormView, View, UpdateView
+from django.views.generic import FormView, View, UpdateView, DeleteView
 from django.views.generic.base import ContextMixin
 
 from .models import Books
@@ -69,3 +69,11 @@ class UpdateBookView(UpdateView):
 
     def get_success_url(self):
         return reverse('books:books-list')
+
+
+@method_decorator(login_required, name='dispatch')
+class DeleteBookView(DeleteView):
+    model = Books
+    template_name = 'books/confirm_delete.html'
+    context_object_name = 'delete_book'
+    success_url = '/books'
