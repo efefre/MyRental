@@ -152,7 +152,7 @@ a.nav-link:hover,
 
 /* Books */
 #books, #add-books, #loan-book, #confirm-return, #change-password,
-#update-book {
+#update-book, #confirm-delete {
     margin-top: 25px;
 }
 
