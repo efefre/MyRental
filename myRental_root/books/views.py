@@ -54,6 +54,11 @@ class AddBookView(FormView):
     form_class = AddBookForm
     success_url = '/books'
 
+    def get_form_kwargs(self):
+        kw = super().get_form_kwargs()
+        kw['request'] = self.request
+        return kw
+
     def form_valid(self, form):
         form = form.save(commit=False)
         form.owner = self.request.user
