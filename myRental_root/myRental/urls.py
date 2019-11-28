@@ -30,5 +30,6 @@ urlpatterns = [
     path('accounts/profile-update/', views.UpdateUserProfileView.as_view(), name='update-profile'),
     path('books/', include('books.urls')),
     path('rental/', include('rental.urls')),
-    path('api/v1/', include(router.urls))
+    path('api/v1/', include(router.urls)),
+    path('api/auth/', include('djoser.urls.authtoken')),
 ]
