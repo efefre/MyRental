@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'two_factor',
 
     'rest_framework',
+    'djoser',
+    'rest_framework.authtoken',
 ]
 
 SITE_ID = 1
