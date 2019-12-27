@@ -9,8 +9,8 @@
     {% csrf_token %}
     <p>Czy na pewno chcesz zwrócić książkę: <strong>{{ return.book.title }}</strong>, wypożyczoną przez <strong>{{return.friend_name}}
       {{return.friend_surname}}</strong>?</p>
-    <button type="submit" class="btn btn-primary">Potwierdź</button>
     <a href="{% url 'books:books-list' %}">Anuluj</a>
+    <button type="submit" class="btn btn-primary">Potwierdź</button>
   </form>
 </div>
 {% endblock %}
