@@ -8,8 +8,8 @@
   <form method="post">
     {% csrf_token %}
     <p>Czy na pewno chcesz usunąć książkę: <strong>{{ delete_book.title }}</strong>?</p>
-    <button type="submit" class="btn btn-primary">Potwierdź</button>
     <a href="{% url 'books:books-list' %}">Anuluj</a>
+    <button type="submit" class="btn btn-primary">Potwierdź</button>
   </form>
 </div>
 
