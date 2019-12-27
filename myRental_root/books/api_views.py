@@ -5,6 +5,10 @@ from . import models
 from . import serializers
 
 class BooksViewset(viewsets.ModelViewSet):
-    queryset = models.Books.objects.all()
     serializer_class = serializers.BooksSerializer
     permission_classes = [IsOwner]
+
+    def get_queryset(self):
+        queryset = models.Books.objects.filter(owner = self.request.user)
+        return queryset
+
