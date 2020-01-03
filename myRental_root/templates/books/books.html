@@ -22,13 +22,17 @@
         <a href="{% url 'books:update-book' pk=book.pk %}" title="Edytuj książkę"><i class="far fa-edit"></i></a>
         <a href="{% url 'books:delete-book' pk=book.pk %}" title="Usuń książkę"><i class="far fa-trash-alt"></i></a>
       </td>
-      <td>{{ book.get_status_display }}</td>
-      <td>{% if book.status == 'AV' %}
-        <a class="btn btn-success btn-sm" href="{% url 'rental:loan-book' pk=book.pk %}">Wypożycz</a>
-        {% endif %}
-        {% if book.status == 'LO' %}
-        <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
-        {% endif %}
+      <td>{% if book.loanbook %}
+            Wypożyczona
+          {% else %}
+            Dostępna
+          {% endif %}
+      </td>
+      <td>{% if not book.loanbook %}
+          <a class="btn btn-success btn-sm" href="{% url 'rental:loan-book' pk=book.pk %}">Wypożycz</a>
+          {% else %}
+          <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
+          {% endif %}
       </td>
       <td>{% for loan in loan_detail %}
         {% if loan.book_id == book.id %}
