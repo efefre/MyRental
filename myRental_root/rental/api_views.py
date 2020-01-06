@@ -1,9 +1,6 @@
-from rest_framework.response import Response
-from rest_framework import status
 from rest_framework import viewsets
 
 from . import models
-from books import models as books_models
 from . import serializers
 
 class LoanBookViewset(viewsets.ModelViewSet):
