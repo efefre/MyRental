@@ -34,12 +34,11 @@
           <a class="btn btn-warning btn-sm" href="{% url 'rental:return-book' pk=book.pk %}">Zwróć</a>
           {% endif %}
       </td>
-      <td>{% for loan in loan_detail %}
-        {% if loan.book_id == book.id %}
-        <p>Wypożyczona: {{loan.date}}</br>
-          <strong>{{loan.friend_name}} {{loan.friend_surname}}</strong> (e-mail: {{loan.friend_email}})</p>
-        {% endif%}
-        {% endfor %}
+      <td>
+        {% if book.loanbook %}
+        <p>Wypożyczona: {{book.loanbook.date}}</br>
+          <strong>{{book.loanbook.friend_name}} {{book.loanbook.friend_surname}}</strong> (e-mail: {{book.loanbook.friend_email}})</p>
+        {% endif %}
       </td>
     </tr>
     {% endfor %}
