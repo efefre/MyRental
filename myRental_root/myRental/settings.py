@@ -131,7 +131,8 @@ DATABASES = {
         'NAME': 'myrental',
         'USER': 'local_admin',
         'PASSWORD': '1234567890',
-        'HOST': 'localhost'
+        'HOST': '127.0.0.1',
+        'PORT': '5433'
     }
 }
 
