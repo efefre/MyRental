@@ -12,25 +12,13 @@ from .forms import AddBookForm, UpdateBookForm
 
 
 # Create your views here.
-class LoanDetailContextMixin(ContextMixin):
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        loan_book = LoanBook.objects.all()
-        context = loan_book
-        return context
-
-
 @method_decorator(login_required, name='dispatch')
-class BooksList(LoanDetailContextMixin, View):
+class BooksList(View):
     template_name = 'books/books.html'
     model = Books
 
-    def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(**kwargs)
-        return ctx
-
     def get(self, request, *args, **kwargs):
-        user_books = self.model.objects.filter(owner = request.user).order_by('-status', 'title')
+        user_books = self.model.objects.filter(owner = request.user).order_by('title')
         page = request.GET.get('page', 1)
 
         paginator = Paginator(user_books, 10)
@@ -44,7 +32,6 @@ class BooksList(LoanDetailContextMixin, View):
 
         context = {
             'user_books' : user_books,
-            'loan_detail' : self.get_context_data(),
         }
         return render(request, self.template_name, context)
 

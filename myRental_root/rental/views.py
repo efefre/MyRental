@@ -35,7 +35,6 @@ class LoanBookView(FormView):
         form = form.save(commit=False)
         context = self.get_context_data()
         form.book = context['book']
-        context['book'].status ='LO'
         context['book'].save()
         form.save()
         return super().form_valid(form)
