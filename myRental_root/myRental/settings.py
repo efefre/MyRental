@@ -132,7 +132,7 @@ DATABASES = {
         'USER': 'local_admin',
         'PASSWORD': '1234567890',
         'HOST': '127.0.0.1',
-        'PORT': '5433'
+        'PORT': '5432' #default
     }
 }
 
